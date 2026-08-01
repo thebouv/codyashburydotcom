@@ -1,0 +1,25 @@
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Dependency files — regenerated from Gemfile
+Gemfile.lock
+vendor/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local

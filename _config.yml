@@ -1,0 +1,18 @@
+title: Cody Ashbury
+description: >-
+  Cody Ashbury is the author of The Bed Heads: Life's a Trip, a novel about
+  the formation of a band in the 1960s and the person who traveled back in time
+  to help them achieve their dreams.
+url: "https://www.codyashbury.com"
+baseurl: ""
+
+permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"
+  - vendor/

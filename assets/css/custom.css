@@ -1,0 +1,74 @@
+/* Replace Squarespace-licensed Adobe Fonts (Typekit) with self-owned Google Fonts.
+   site.css declares proxima-nova/adobe-garamond-pro by name; since those font
+   faces are no longer loaded we override every visible text element here.
+   Icon-font classes (social-icon-font, squarespace-ui-font) are not present in
+   the template so the broad selector is safe. */
+#header, #header *,
+#page, #page *,
+#preFooter, #preFooter *,
+#footer, #footer * {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* Serif elements that used adobe-garamond-pro */
+.design-layout-poster .image-subtitle p,
+.design-layout-overlap .image-subtitle p,
+.design-layout-collage .image-subtitle p {
+  font-family: 'EB Garamond', Georgia, serif !important;
+}
+
+/* Squarespace image containers — need block display for padding-bottom
+   aspect-ratio trick to work. div-container tags have been converted to
+   <div class="div-container"> and a-link to <a>. */
+.div-container {
+  display: block;
+}
+a.sqs-block-image-link {
+  display: block;
+}
+
+/* site.css column widths use .sqs-col-12 .sqs-col-X selectors (descendant of a
+   full-width column). Top-level columns that are direct children of a row get
+   no width from site.css, so we add them here. */
+.sqs-row > .sqs-col-4  { width: 33.3333%; }
+.sqs-row > .sqs-col-6  { width: 50%; }
+.sqs-row > .sqs-col-8  { width: 66.6666%; }
+.sqs-row > .sqs-col-12 { width: 100%; }
+
+/* site.css hides .sqs-dynamic-text until JS adds .sqs-text-ready. Without JS
+   that class is never added, so make the text always visible. */
+.image-block-outer-wrapper .sqs-dynamic-text {
+  visibility: visible !important;
+}
+
+/* The design-layout-card figure uses flex with min-height:100% on the figcaption.
+   Squarespace JS sets explicit pixel heights to resolve this; without JS it creates
+   an infinite height loop. Fix: size flex items to content instead. */
+.sqs-block-image .design-layout-card {
+  align-items: flex-start;
+}
+.sqs-block-image .design-layout-card .image-card-wrapper {
+  min-height: 0 !important;
+}
+
+/* Trim excess bottom padding that the removed Stay Tuned section used to fill */
+.main-content .sqs-layout { padding-bottom: 0 !important; }
+
+/* Preserve the teal pre-footer bar (social icons removed but bar stays) */
+#preFooter {
+  height: 100px;
+}
+
+/* Always show header — no Squarespace scroll-reveal JS */
+#header {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+/* Squarespace lazy-loader adds .loaded on images; show all regardless */
+img {
+  opacity: 1 !important;
+}
